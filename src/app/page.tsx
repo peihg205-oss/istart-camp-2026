@@ -1,69 +1,99 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { Podium } from '@/components/home/Podium';
+import { LeaderboardTable } from '@/components/home/LeaderboardTable';
+import { RecentActivityTicker } from '@/components/home/RecentActivityTicker';
+import { useScoringSystem } from '@/lib/store/scoringStore';
+import { Sparkles, Compass, ShieldAlert, Award } from 'lucide-react';
+import Link from 'next/link';
+
+export default function HomePage() {
+  const { rankedTeams, transactions } = useScoringSystem();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="w-full flex flex-col space-y-8 pt-4 sm:pt-6 pb-16">
+      {/* 1. Top 3 Podium Focus */}
+      <Podium topTeams={rankedTeams.slice(0, 3)} />
+
+      {/* 3. Main Content Grid: Leaderboard (Left/Main) & Live Feeds (Right) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Complete 14 Teams Leaderboard (spans 2 columns on desktop) */}
+          <div className="lg:col-span-2 space-y-6">
+            <LeaderboardTable teams={rankedTeams} />
+          </div>
+
+          {/* Sidebar: Live Feeds & Quick Guides */}
+          <div className="space-y-6">
+            {/* Recent Activity Live Stream */}
+            <RecentActivityTicker transactions={transactions} />
+
+            {/* Camp Values Card */}
+            <div className="bg-gradient-to-br from-[#1A55E3] via-[#1547bf] to-[#0d2466] text-white rounded-3xl p-6 shadow-md relative overflow-hidden">
+              <div className="absolute top-0 right-0 translate-x-4 -translate-y-4 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-xs font-bold mb-4 backdrop-blur-xs border border-white/20">
+                <Sparkles className="w-3.5 h-3.5 text-[#0DCAF0]" />
+                <span>Giá trị cốt lõi iSER</span>
+              </div>
+
+              <h4 className="text-xl font-black mb-2">Unlock the iSER in you!</h4>
+              <p className="text-xs text-blue-100/90 leading-relaxed mb-4">
+                Điểm số không chỉ đo lường chiến thắng, mà còn ghi nhận sự kỷ luật, tinh thần đồng đội và nỗ lực bứt phá không ngừng của mỗi cá nhân và tập thể.
+              </p>
+
+              <div className="grid grid-cols-2 gap-2 text-xs font-bold pt-2 border-t border-blue-400/30">
+                <div className="flex items-center gap-1.5 text-blue-100">
+                  <span className="w-2 h-2 rounded-full bg-[#00D284]"></span>
+                  <span>Integrity (Chính trực)</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-blue-100">
+                  <span className="w-2 h-2 rounded-full bg-[#0DCAF0]"></span>
+                  <span>Synergy (Đồng vận)</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-blue-100">
+                  <span className="w-2 h-2 rounded-full bg-[#5E6EED]"></span>
+                  <span>Empathy (Thấu cảm)</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-blue-100">
+                  <span className="w-2 h-2 rounded-full bg-[#FF0854]"></span>
+                  <span>Resilience (Kiên cường)</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Links Card */}
+            <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs space-y-3">
+              <h5 className="text-sm font-black text-slate-900 uppercase tracking-wider">
+                Truy cập nhanh
+              </h5>
+              <div className="space-y-2 text-xs font-semibold">
+                <Link
+                  href="/activities"
+                  className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-[#1A55E3]/5 text-slate-700 hover:text-[#1A55E3] transition-colors"
+                >
+                  <span className="flex items-center gap-2">
+                    <Compass className="w-4 h-4 text-[#1A55E3]" />
+                    Xem quy chế 6 bài thi
+                  </span>
+                  <Award className="w-3.5 h-3.5 text-slate-400" />
+                </Link>
+
+                <Link
+                  href="/activities#discipline"
+                  className="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-[#FF0854]/5 text-slate-700 hover:text-[#FF0854] transition-colors"
+                >
+                  <span className="flex items-center gap-2">
+                    <ShieldAlert className="w-4 h-4 text-[#FF0854]" />
+                    Biểu phí trừ điểm Kỷ luật
+                  </span>
+                  <span className="text-[11px] font-bold text-[#FF0854] bg-[#FF0854]/10 px-2 py-0.5 rounded-full">-30 đến -70đ</span>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
     </div>
   );
 }
