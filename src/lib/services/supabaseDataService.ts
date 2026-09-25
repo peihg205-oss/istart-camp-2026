@@ -232,7 +232,7 @@ export async function updateScoreTransaction(
     // Insert Audit Log
     await supabase.from('score_audit_logs').insert({
       transaction_id: id,
-      action: 'EDIT',
+      action: 'UPDATE',
       performed_by: performedBy && performedBy.includes('-') ? performedBy : null,
       old_value: existing,
       new_value: updated,

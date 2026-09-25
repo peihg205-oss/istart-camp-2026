@@ -150,13 +150,15 @@ export default function AdminSettingsPage() {
             </button>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white border border-sky-200 space-y-2">
-            <div className="font-bold text-[#00a86b] flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              GIAI ĐOẠN 2: CHẠY THẬT VỚI SUPABASE
+          <div className={`p-4 rounded-2xl border space-y-2 ${!isDemoMode ? 'bg-emerald-50/60 border-emerald-200' : 'bg-white border-sky-200'}`}>
+            <div className={`font-bold flex items-center gap-2 ${!isDemoMode ? 'text-emerald-700' : 'text-[#00a86b]'}`}>
+              <span className={`w-2.5 h-2.5 rounded-full ${!isDemoMode ? 'bg-emerald-500 animate-ping' : 'bg-emerald-500'}`}></span>
+              {!isDemoMode ? 'ĐANG CHẠY THẬT VỚI SUPABASE CLOUD (REALTIME HOẠT ĐỘNG)' : 'CHẾ ĐỘ HYBRID / DEMO'}
             </div>
             <p className="text-[#5A5248] text-[11px] leading-relaxed">
-              Khi bắt đầu giải thật: Thêm <code className="text-amber-700 bg-amber-50 px-1 py-0.5 rounded">NEXT_PUBLIC_SUPABASE_URL</code> & <code className="text-amber-700 bg-amber-50 px-1 py-0.5 rounded">NEXT_PUBLIC_SUPABASE_ANON_KEY</code> vào file <code className="text-[#1A55E3] bg-sky-50 px-1 py-0.5 rounded">.env.local</code>.
+              {!isDemoMode 
+                ? 'Hệ thống đã kết nối hoàn hảo với PostgreSQL Supabase. Mọi điểm số, chỉnh sửa, hoạt động và ảnh đội thi được lưu vĩnh viễn và đồng bộ trực tiếp tới tất cả thiết bị của khán giả/trọng tài.'
+                : 'Đang dùng bộ nhớ cục bộ. Để chạy thật, cấu hình NEXT_PUBLIC_SUPABASE_URL và NEXT_PUBLIC_SUPABASE_ANON_KEY trên Vercel.'}
             </p>
           </div>
         </div>
@@ -182,16 +184,16 @@ export default function AdminSettingsPage() {
           <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#E2DDD2] space-y-1">
             <div className="text-[#64748B]">Chế độ vận hành:</div>
             <div className="font-bold text-[#1E293B] flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              {isDemoMode ? 'Hybrid Local Store (Đang hoạt động mượt mà)' : 'Supabase Cloud Live'}
+              <span className={`w-2 h-2 rounded-full ${!isDemoMode ? 'bg-emerald-500' : 'bg-amber-500'}`}></span>
+              {!isDemoMode ? 'Supabase Cloud Live (Dữ liệu thật 100%)' : 'Hybrid Local Store'}
             </div>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#E2DDD2] space-y-1">
             <div className="text-[#64748B]">Kênh Realtime Broadcast:</div>
             <div className="font-bold text-[#1E293B] flex items-center gap-2">
-              <Radio className="w-3.5 h-3.5 text-[#00a86b]" />
-              {isRealtimeConnected ? 'Đang kết nối liên tục (Active)' : 'Ngoại tuyến'}
+              <Radio className={`w-3.5 h-3.5 ${isRealtimeConnected ? 'text-[#00a86b] animate-pulse' : 'text-slate-400'}`} />
+              {isRealtimeConnected ? 'Đang kết nối liên tục (Active Live)' : 'Đang kết nối lại...'}
             </div>
           </div>
         </div>

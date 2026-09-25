@@ -155,8 +155,12 @@ export function ScoringProvider({ children }: { children: React.ReactNode }) {
   const [currentProfile, setCurrentProfile] = useState<Profile | null>(() =>
     getInitialStorageData(STORAGE_KEY_USER, INITIAL_PROFILES[0])
   );
-  const [isRealtimeConnected, setIsRealtimeConnected] = useState<boolean>(true);
-  const [isDemoMode] = useState<boolean>(true);
+  const [isRealtimeConnected, setIsRealtimeConnected] = useState<boolean>(false);
+  const [isDemoMode, setIsDemoMode] = useState<boolean>(() => {
+    const url = (process.env.NEXT_PUBLIC_SUPABASE_URL || '').trim();
+    const key = (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '').trim();
+    return !url || !key || url.includes('your-project');
+  });
   const [lastUpdateTimestamp, setLastUpdateTimestamp] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -211,39 +215,86 @@ export function ScoringProvider({ children }: { children: React.ReactNode }) {
     []
   );
 
-  // Fetch real data from Supabase on mount
+  // Fetch real data from Supabase on mount and re-focus
+  const loadRealData = useCallback(async () => {
+    try {
+      const [liveTeams, liveActs, liveTxs, liveLogs, liveUsers] = await Promise.all([
+        fetchLiveTeams(),
+        fetchLiveActivities(),
+        fetchLiveTransactions(),
+        fetchLiveAuditLogs(),
+        fetchLiveProfiles(),
+      ]);
+
+      if (liveTeams.length > 0) {
+        setTeams(liveTeams);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem(STORAGE_KEY_TEAMS, JSON.stringify(liveTeams));
+        }
+      }
+      if (liveActs.length > 0) {
+        setActivities(liveActs);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem(STORAGE_KEY_ACTIVITIES, JSON.stringify(liveActs));
+        }
+      }
+      if (liveTxs.length > 0) {
+        setTransactions(liveTxs);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem(STORAGE_KEY_TRANSACTIONS, JSON.stringify(liveTxs));
+        }
+      }
+      if (liveLogs.length > 0) {
+        setAuditLogs(liveLogs);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem(STORAGE_KEY_AUDIT, JSON.stringify(liveLogs));
+        }
+      }
+      if (liveUsers.length > 0) {
+        setProfiles(liveUsers);
+      }
+
+      if (liveTeams.length > 0 || liveTxs.length > 0) {
+        setIsDemoMode(false);
+        setIsRealtimeConnected(true);
+        setLastUpdateTimestamp(Date.now());
+      }
+    } catch (err) {
+      console.warn('Real data loading fallback:', err);
+    }
+  }, []);
+
+  // Initial load
   useEffect(() => {
     let isMounted = true;
-    async function loadRealData() {
-      setIsLoading(true);
-      try {
-        const [liveTeams, liveActs, liveTxs, liveLogs, liveUsers] = await Promise.all([
-          fetchLiveTeams(),
-          fetchLiveActivities(),
-          fetchLiveTransactions(),
-          fetchLiveAuditLogs(),
-          fetchLiveProfiles(),
-        ]);
+    setIsLoading(true);
+    loadRealData().finally(() => {
+      if (isMounted) setIsLoading(false);
+    });
 
-        if (isMounted) {
-          if (liveTeams.length > 0) setTeams(liveTeams);
-          if (liveActs.length > 0) setActivities(liveActs);
-          if (liveTxs.length > 0) setTransactions(liveTxs);
-          if (liveLogs.length > 0) setAuditLogs(liveLogs);
-          if (liveUsers.length > 0) setProfiles(liveUsers);
-        }
-      } catch (err) {
-        console.warn('Real data loading fallback:', err);
-      } finally {
-        if (isMounted) setIsLoading(false);
+    // Auto-refresh when tab is focused or becomes visible
+    const handleVisibility = () => {
+      if (typeof document !== 'undefined' && document.visibilityState === 'visible') {
+        loadRealData();
       }
+    };
+    const handleFocus = () => {
+      loadRealData();
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('focus', handleFocus);
+      document.addEventListener('visibilitychange', handleVisibility);
     }
 
-    loadRealData();
     return () => {
       isMounted = false;
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('focus', handleFocus);
+        document.removeEventListener('visibilitychange', handleVisibility);
+      }
     };
-  }, []);
+  }, [loadRealData]);
 
   // Listen for custom broadcast events across browser tabs (StorageEvent & BroadcastChannel)
   useEffect(() => {
@@ -291,24 +342,91 @@ export function ScoringProvider({ children }: { children: React.ReactNode }) {
   // Supabase Realtime channel integration
   useEffect(() => {
     const supabase = createClient();
-    if (!supabase) return;
+    if (!supabase) {
+      setIsRealtimeConnected(false);
+      return;
+    }
 
     const channel = supabase
-      .channel('score_transactions_realtime')
+      .channel('istart_supabase_realtime_all')
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'score_transactions' },
         (payload) => {
           setLastUpdateTimestamp(Date.now());
           if (payload.eventType === 'INSERT') {
-            const newTx = payload.new as ScoreTransaction;
-            setTransactions((prev) => [newTx, ...prev.filter((t) => t.id !== newTx.id)]);
+            const raw = payload.new as ScoreTransaction;
+            const newTx: ScoreTransaction = {
+              ...raw,
+              points_awarded: Number(raw.points_awarded),
+            };
+            setTransactions((prev) => {
+              const updated = [newTx, ...prev.filter((t) => t.id !== newTx.id)];
+              if (typeof window !== 'undefined') {
+                localStorage.setItem(STORAGE_KEY_TRANSACTIONS, JSON.stringify(updated));
+              }
+              return updated;
+            });
           } else if (payload.eventType === 'UPDATE') {
-            const updated = payload.new as ScoreTransaction;
-            setTransactions((prev) => prev.map((t) => (t.id === updated.id ? updated : t)));
+            const raw = payload.new as ScoreTransaction;
+            const updated: ScoreTransaction = {
+              ...raw,
+              points_awarded: Number(raw.points_awarded),
+            };
+            setTransactions((prev) => {
+              const next = prev.map((t) => (t.id === updated.id ? { ...t, ...updated } : t));
+              if (typeof window !== 'undefined') {
+                localStorage.setItem(STORAGE_KEY_TRANSACTIONS, JSON.stringify(next));
+              }
+              return next;
+            });
           } else if (payload.eventType === 'DELETE') {
             const deleted = payload.old as ScoreTransaction;
-            setTransactions((prev) => prev.filter((t) => t.id !== deleted.id));
+            setTransactions((prev) => {
+              const next = prev.filter((t) => t.id !== deleted.id);
+              if (typeof window !== 'undefined') {
+                localStorage.setItem(STORAGE_KEY_TRANSACTIONS, JSON.stringify(next));
+              }
+              return next;
+            });
+          }
+        }
+      )
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'teams' },
+        (payload) => {
+          setLastUpdateTimestamp(Date.now());
+          if (payload.eventType === 'UPDATE' || payload.eventType === 'INSERT') {
+            const updatedTeam = payload.new as Team;
+            setTeams((prev) => {
+              const next = prev.map((t) =>
+                t.id === updatedTeam.id ? { ...t, ...updatedTeam } : t
+              );
+              if (typeof window !== 'undefined') {
+                localStorage.setItem(STORAGE_KEY_TEAMS, JSON.stringify(next));
+              }
+              return next;
+            });
+          }
+        }
+      )
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'activities' },
+        (payload) => {
+          setLastUpdateTimestamp(Date.now());
+          if (payload.eventType === 'UPDATE' || payload.eventType === 'INSERT') {
+            const updatedAct = payload.new as Activity;
+            setActivities((prev) => {
+              const next = prev.map((a) =>
+                a.id === updatedAct.id ? { ...a, ...updatedAct } : a
+              );
+              if (typeof window !== 'undefined') {
+                localStorage.setItem(STORAGE_KEY_ACTIVITIES, JSON.stringify(next));
+              }
+              return next;
+            });
           }
         }
       )
