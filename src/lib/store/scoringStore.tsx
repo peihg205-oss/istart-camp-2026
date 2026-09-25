@@ -152,9 +152,20 @@ export function ScoringProvider({ children }: { children: React.ReactNode }) {
     getInitialStorageData(STORAGE_KEY_AUDIT, INITIAL_AUDIT_LOGS)
   );
   const [profiles, setProfiles] = useState<Profile[]>(INITIAL_PROFILES);
-  const [currentProfile, setCurrentProfile] = useState<Profile | null>(() =>
-    getInitialStorageData(STORAGE_KEY_USER, INITIAL_PROFILES[0])
-  );
+  const [currentProfile, setCurrentProfile] = useState<Profile | null>(() => {
+    if (typeof window === 'undefined') return null;
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY_USER);
+      if (!stored || stored === 'null' || stored === 'undefined') return null;
+      const parsed = JSON.parse(stored);
+      if (parsed && typeof parsed === 'object' && parsed.email && parsed.role) {
+        return parsed as Profile;
+      }
+      return null;
+    } catch {
+      return null;
+    }
+  });
   const [isRealtimeConnected, setIsRealtimeConnected] = useState<boolean>(false);
   const [isDemoMode, setIsDemoMode] = useState<boolean>(() => {
     const url = (process.env.NEXT_PUBLIC_SUPABASE_URL || '').trim();
@@ -439,13 +450,16 @@ export function ScoringProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  // Authenticate as a specific role
+  // Role switcher (only allowed if already authenticated as Admin)
   const loginAs = useCallback(
     (role: 'ADMIN' | 'SCORER') => {
-      const profile = profiles.find((p) => p.role === role) || INITIAL_PROFILES[0];
-      persistState(undefined, undefined, undefined, undefined, profile);
+      if (!currentProfile || currentProfile.role !== 'ADMIN') return;
+      const profile = profiles.find((p) => p.role === role);
+      if (profile) {
+        persistState(undefined, undefined, undefined, undefined, profile);
+      }
     },
-    [profiles, persistState]
+    [currentProfile, profiles, persistState]
   );
 
   const loginWithCredentials = useCallback(
@@ -525,6 +539,13 @@ export function ScoringProvider({ children }: { children: React.ReactNode }) {
       metadata: Record<string, unknown>;
       notes?: string;
     }) => {
+      if (!currentProfile) {
+        return {
+          success: false,
+          error: 'Yêu cầu đăng nhập tài khoản Quản trị / Trọng tài để thực hiện tính điểm.',
+        };
+      }
+
       const team = teams.find((t) => t.id === teamId);
       const activity = activities.find((a) => a.id === activityId);
 

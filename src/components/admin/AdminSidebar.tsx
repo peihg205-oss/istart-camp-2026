@@ -122,29 +122,11 @@ export function AdminSidebar() {
             {currentProfile?.email || 'scorer@istartcamp.vn'}
           </div>
 
-          {/* Quick Demo Role Switcher */}
-          <div className="mt-2.5 pt-2 border-t border-[#EAE5D9] flex items-center gap-1">
-            <span className="text-[10px] text-[#7C746A]">Đổi vai trò:</span>
-            <button
-              onClick={() => loginAs('ADMIN')}
-              className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all ${
-                isAdmin
-                  ? 'bg-amber-400 text-slate-900 font-black'
-                  : 'bg-[#E5DFD3] text-[#5A5248] hover:text-[#1E293B]'
-              }`}
-            >
-              ADMIN
-            </button>
-            <button
-              onClick={() => loginAs('SCORER')}
-              className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all ${
-                !isAdmin
-                  ? 'bg-[#1A55E3] text-white font-black'
-                  : 'bg-[#E5DFD3] text-[#5A5248] hover:text-[#1E293B]'
-              }`}
-            >
-              SCORER
-            </button>
+          <div className="mt-2.5 pt-2 border-t border-[#EAE5D9] flex items-center justify-between">
+            <span className="text-[10px] text-[#7C746A]">Trạng thái:</span>
+            <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+              Đã xác thực
+            </span>
           </div>
         </div>
 

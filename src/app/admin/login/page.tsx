@@ -28,27 +28,25 @@ export default function AdminLoginPage() {
   const { currentProfile, loginWithCredentials, logout } = useScoringSystem();
 
   const [activeTab, setActiveTab] = useState<TabMode>('ADMIN');
-  const [email, setEmail] = useState('admin@istartcamp.vn');
-  const [password, setPassword] = useState('iSER2026!secret');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
 
-  // Switch role mode and pre-fill credentials for quick test/demo
+  // Switch role mode (only pre-fill email, never password)
   const handleTabChange = (mode: TabMode) => {
     setActiveTab(mode);
     setError('');
+    setPassword('');
     if (mode === 'ADMIN') {
       setEmail('admin@istartcamp.vn');
-      setPassword('iSER2026!secret');
     } else if (mode === 'SCORER') {
       setEmail('scorer@istartcamp.vn');
-      setPassword('iSER2026!secret');
     } else {
       setEmail('');
-      setPassword('');
     }
   };
 
@@ -273,17 +271,7 @@ export default function AdminLoginPage() {
           </div>
 
           <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-[#5A5248]">Mật Khẩu Truy Cập:</label>
-              <button
-                type="button"
-                onClick={() => setPassword('iSER2026!secret')}
-                className="text-[10px] text-[#1A55E3] hover:underline font-semibold"
-                title="Điền mật khẩu mặc định"
-              >
-                Gợi ý: iSER2026!secret
-              </button>
-            </div>
+            <label className="text-xs font-bold text-[#5A5248]">Mật Khẩu Truy Cập:</label>
             <div className="relative">
               <Lock className="w-4 h-4 text-[#94A3B8] absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input

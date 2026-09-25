@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { AdminSidebar } from '@/components/admin/AdminSidebar';
 import { useScoringSystem } from '@/lib/store/scoringStore';
 import Link from 'next/link';
@@ -9,6 +9,7 @@ import { ShieldAlert, Loader2, ArrowRight } from 'lucide-react';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
   const { currentProfile } = useScoringSystem();
   const [mounted, setMounted] = useState(false);
 
@@ -17,6 +18,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }, []);
 
   const isLoginPage = pathname === '/admin/login';
+
+  // Immediate redirect to login if unauthenticated
+  useEffect(() => {
+    if (mounted && !currentProfile && !isLoginPage) {
+      router.replace('/admin/login');
+    }
+  }, [mounted, currentProfile, isLoginPage, router]);
 
   if (isLoginPage) {
     return (
