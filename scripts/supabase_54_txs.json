@@ -1,0 +1,931 @@
+[
+  {
+    "id": "tx-bda-1",
+    "team_id": "team-bda",
+    "activity_id": "act-baseline",
+    "points_awarded": 150,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Điểm khởi đầu Trại IStart 2026",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-bda-2",
+    "team_id": "team-bda",
+    "activity_id": "act-lab-1",
+    "points_awarded": 15,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Hoàn thành xuất sắc Lab 1",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-bda-3",
+    "team_id": "team-bda",
+    "activity_id": "act-lab-2",
+    "points_awarded": 15,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Hoàn thành dự án Lab 2",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-bda-4",
+    "team_id": "team-bda",
+    "activity_id": "act-hero-1",
+    "points_awarded": 30,
+    "metadata": {
+      "rank": 1,
+      "rule_type": "RANKING"
+    },
+    "notes": "Quán quân thử thách đối kháng Hero 1",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-bda-5",
+    "team_id": "team-bda",
+    "activity_id": "act-hero-2",
+    "points_awarded": 20,
+    "metadata": {
+      "rank": 1,
+      "rule_type": "RANKING"
+    },
+    "notes": "Quán quân thử thách Hero 2",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-bda-6",
+    "team_id": "team-bda",
+    "activity_id": "act-cheers",
+    "points_awarded": 70,
+    "metadata": {
+      "rule_type": "FORMULA"
+    },
+    "notes": "Cổ vũ bùng nổ hai phiên Sáng & Chiều",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-bel-1",
+    "team_id": "team-bel",
+    "activity_id": "act-baseline",
+    "points_awarded": 150,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Điểm khởi đầu Trại IStart 2026",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-bel-2",
+    "team_id": "team-bel",
+    "activity_id": "act-lab-1",
+    "points_awarded": 15,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Hoàn thành Lab 1",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-bel-3",
+    "team_id": "team-bel",
+    "activity_id": "act-lab-2",
+    "points_awarded": 15,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Hoàn thành Lab 2",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-bel-4",
+    "team_id": "team-bel",
+    "activity_id": "act-hero-1",
+    "points_awarded": 25,
+    "metadata": {
+      "rank": 2,
+      "rule_type": "RANKING"
+    },
+    "notes": "Á quân thử thách đối kháng Hero 1",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-bel-5",
+    "team_id": "team-bel",
+    "activity_id": "act-cheers",
+    "points_awarded": 70,
+    "metadata": {
+      "rule_type": "FORMULA"
+    },
+    "notes": "Cổ vũ nhiệt huyết tinh thần thủ lĩnh",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ice-aai-1",
+    "team_id": "team-ice-aai",
+    "activity_id": "act-baseline",
+    "points_awarded": 150,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Điểm khởi đầu Trại IStart 2026",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ice-aai-2",
+    "team_id": "team-ice-aai",
+    "activity_id": "act-lab-1",
+    "points_awarded": 15,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Hoàn thành Lab 1",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ice-aai-3",
+    "team_id": "team-ice-aai",
+    "activity_id": "act-hero-1",
+    "points_awarded": 20,
+    "metadata": {
+      "rank": 3,
+      "rule_type": "RANKING"
+    },
+    "notes": "Hạng 3 thử thách Hero 1",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ice-aai-4",
+    "team_id": "team-ice-aai",
+    "activity_id": "act-cheers",
+    "points_awarded": 53,
+    "metadata": {
+      "rule_type": "FORMULA"
+    },
+    "notes": "Điểm cổ động sáng tạo công nghệ liên quân",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ib3-1",
+    "team_id": "team-ib3-keuka-mkt",
+    "activity_id": "act-baseline",
+    "points_awarded": 150,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Điểm khởi đầu Trại IStart 2026",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ib3-2",
+    "team_id": "team-ib3-keuka-mkt",
+    "activity_id": "act-lab-1",
+    "points_awarded": 15,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Hoàn thành Lab 1",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ib3-3",
+    "team_id": "team-ib3-keuka-mkt",
+    "activity_id": "act-hero-2",
+    "points_awarded": 15,
+    "metadata": {
+      "rank": 2,
+      "rule_type": "RANKING"
+    },
+    "notes": "Á quân thử thách Hero 2",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ib3-4",
+    "team_id": "team-ib3-keuka-mkt",
+    "activity_id": "act-cheers",
+    "points_awarded": 50,
+    "metadata": {
+      "rule_type": "FORMULA"
+    },
+    "notes": "Đồng diễn cổ động liên quân 3 sắc áo",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ib2-1",
+    "team_id": "team-ib-2",
+    "activity_id": "act-baseline",
+    "points_awarded": 150,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Điểm khởi đầu Trại IStart 2026",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ib2-2",
+    "team_id": "team-ib-2",
+    "activity_id": "act-lab-1",
+    "points_awarded": 15,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Hoàn thành Lab 1",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ib2-3",
+    "team_id": "team-ib-2",
+    "activity_id": "act-hero-2",
+    "points_awarded": 10,
+    "metadata": {
+      "rank": 3,
+      "rule_type": "RANKING"
+    },
+    "notes": "Hạng 3 thử thách Hero 2",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ib2-4",
+    "team_id": "team-ib-2",
+    "activity_id": "act-cheers",
+    "points_awarded": 35,
+    "metadata": {
+      "rule_type": "FORMULA"
+    },
+    "notes": "Tinh thần cổ vũ sôi nổi phiên chiều",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ait-isel-1",
+    "team_id": "team-ait-isel",
+    "activity_id": "act-baseline",
+    "points_awarded": 150,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Điểm khởi đầu Trại IStart 2026",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ait-isel-2",
+    "team_id": "team-ait-isel",
+    "activity_id": "act-lab-1",
+    "points_awarded": 15,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Hoàn thành Lab 1 kỹ thuật & logistics",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ait-isel-3",
+    "team_id": "team-ait-isel",
+    "activity_id": "act-cheers",
+    "points_awarded": 40,
+    "metadata": {
+      "rule_type": "FORMULA"
+    },
+    "notes": "Cổ vũ đồng đều, hô vang khẩu hiệu",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-fdb-1",
+    "team_id": "team-fdb",
+    "activity_id": "act-baseline",
+    "points_awarded": 150,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Điểm khởi đầu Trại IStart 2026",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-fdb-2",
+    "team_id": "team-fdb",
+    "activity_id": "act-lab-1",
+    "points_awarded": 15,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Hoàn thành Lab 1 Fintech",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-fdb-3",
+    "team_id": "team-fdb",
+    "activity_id": "act-cheers",
+    "points_awarded": 35,
+    "metadata": {
+      "rule_type": "FORMULA"
+    },
+    "notes": "Sắc xanh FDB cổ vũ nhiệt tình",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ac-1",
+    "team_id": "team-ac",
+    "activity_id": "act-baseline",
+    "points_awarded": 150,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Điểm khởi đầu Trại IStart 2026",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ac-2",
+    "team_id": "team-ac",
+    "activity_id": "act-lab-1",
+    "points_awarded": 15,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Hoàn thành chuẩn xác Lab 1",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ac-3",
+    "team_id": "team-ac",
+    "activity_id": "act-cheers",
+    "points_awarded": 20,
+    "metadata": {
+      "rule_type": "FORMULA"
+    },
+    "notes": "Cổ vũ nhịp nhàng và chuẩn mực",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-db-1",
+    "team_id": "team-db",
+    "activity_id": "act-baseline",
+    "points_awarded": 150,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Điểm khởi đầu Trại IStart 2026",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-db-2",
+    "team_id": "team-db",
+    "activity_id": "act-lab-1",
+    "points_awarded": 15,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Hoàn thành Lab 1 Digital Business",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-db-3",
+    "team_id": "team-db",
+    "activity_id": "act-cheers",
+    "points_awarded": 20,
+    "metadata": {
+      "rule_type": "FORMULA"
+    },
+    "notes": "Tiếng hô cổ vũ mạnh mẽ",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Trọng tài viên iSER",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-ib1-1",
+    "team_id": "team-ib-1",
+    "activity_id": "act-baseline",
+    "points_awarded": 150,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Điểm khởi đầu Trại IStart 2026",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-mis-1",
+    "team_id": "team-mis",
+    "activity_id": "act-baseline",
+    "points_awarded": 150,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Điểm khởi đầu Trại IStart 2026",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-dc-1",
+    "team_id": "team-dc",
+    "activity_id": "act-baseline",
+    "points_awarded": 150,
+    "metadata": {
+      "rule_type": "FIXED"
+    },
+    "notes": "Điểm khởi đầu Trại IStart 2026",
+    "status": "ACTIVE",
+    "created_by": null,
+    "created_by_name": "Camp Master Admin",
+    "created_at": "2026-09-24T22:37:20.30304+00:00",
+    "updated_at": "2026-09-24T22:37:20.30304+00:00"
+  },
+  {
+    "id": "tx-4c9582f7-ee03-4f95-a613-7471f86f7985",
+    "team_id": "team-dc",
+    "activity_id": "act-cheers",
+    "points_awarded": 34,
+    "metadata": {
+      "rank": 1,
+      "breakdown": "Weighted Cheers Score [morning=85, afternoon=0] => 34 điểm",
+      "rule_type": "FORMULA",
+      "formula_values": {
+        "morning": 85,
+        "afternoon": 0
+      },
+      "quantity_count": 1,
+      "quantity_item_id": "noise"
+    },
+    "notes": "Weighted Cheers Score [morning=85, afternoon=0] => 34 điểm",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T00:51:07.478012+00:00",
+    "updated_at": "2026-09-25T00:51:07.478012+00:00"
+  },
+  {
+    "id": "tx-6998ff26-21fb-4f17-86d9-d247af8b8f4e",
+    "team_id": "team-ib3-keuka-mkt",
+    "activity_id": "act-special-event",
+    "points_awarded": -10,
+    "metadata": {
+      "notes": "",
+      "reason": "Mất trật tự",
+      "is_special": true,
+      "category_name": "Thưởng đột xuất (Bonus)"
+    },
+    "notes": "Mất trật tự",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T00:54:44.615693+00:00",
+    "updated_at": "2026-09-25T00:54:44.615693+00:00"
+  },
+  {
+    "id": "tx-11e53d1e-7733-4f03-be88-5584548e7a80",
+    "team_id": "team-ice-aai",
+    "activity_id": "act-special-event",
+    "points_awarded": 10,
+    "metadata": {
+      "notes": "",
+      "reason": "Cổ vũ bùng nổ nhất phiên",
+      "is_special": true,
+      "category_name": "Thưởng đột xuất (Bonus)"
+    },
+    "notes": "Cổ vũ bùng nổ nhất phiên",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T00:55:39.000554+00:00",
+    "updated_at": "2026-09-25T00:55:39.000554+00:00"
+  },
+  {
+    "id": "tx-65571c30-dd0c-4395-bd55-e63c00dfb8a1",
+    "team_id": "team-mis",
+    "activity_id": "act-cheers",
+    "points_awarded": 34,
+    "metadata": {
+      "rank": 1,
+      "breakdown": "Weighted Cheers Score [morning=85, afternoon=0] => 34 điểm",
+      "rule_type": "FORMULA",
+      "formula_values": {
+        "morning": 85,
+        "afternoon": 0
+      },
+      "quantity_count": 1,
+      "quantity_item_id": "noise"
+    },
+    "notes": "Weighted Cheers Score [morning=85, afternoon=0] => 34 điểm",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T00:59:33.51539+00:00",
+    "updated_at": "2026-09-25T00:59:33.51539+00:00"
+  },
+  {
+    "id": "tx-1a8ec08d-6516-4b86-891a-d4d5e12694a4",
+    "team_id": "team-ait-isel",
+    "activity_id": "act-cheers",
+    "points_awarded": 30,
+    "metadata": {
+      "rank": 1,
+      "breakdown": "Weighted Cheers Score [morning=75, afternoon=0] => 30 điểm",
+      "rule_type": "FORMULA",
+      "formula_values": {
+        "morning": 75,
+        "afternoon": 0
+      },
+      "quantity_count": 1,
+      "quantity_item_id": "noise"
+    },
+    "notes": "Weighted Cheers Score [morning=75, afternoon=0] => 30 điểm",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T01:00:28.788201+00:00",
+    "updated_at": "2026-09-25T01:00:28.788201+00:00"
+  },
+  {
+    "id": "tx-7975963f-efb0-4137-8303-811dc1443748",
+    "team_id": "team-bel",
+    "activity_id": "act-cheers",
+    "points_awarded": 30,
+    "metadata": {
+      "rank": 1,
+      "breakdown": "Weighted Cheers Score [morning=75, afternoon=0] => 30 điểm",
+      "rule_type": "FORMULA",
+      "formula_values": {
+        "morning": 75,
+        "afternoon": 0
+      },
+      "quantity_count": 1,
+      "quantity_item_id": "noise"
+    },
+    "notes": "Weighted Cheers Score [morning=75, afternoon=0] => 30 điểm",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T01:01:04.536086+00:00",
+    "updated_at": "2026-09-25T01:01:04.536086+00:00"
+  },
+  {
+    "id": "tx-668295e5-7677-41b7-a78d-6799bf522087",
+    "team_id": "team-ib3-keuka-mkt",
+    "activity_id": "act-cheers",
+    "points_awarded": 32,
+    "metadata": {
+      "rank": 1,
+      "breakdown": "Weighted Cheers Score [morning=80, afternoon=0] => 32 điểm",
+      "rule_type": "FORMULA",
+      "formula_values": {
+        "morning": 80,
+        "afternoon": 0
+      },
+      "quantity_count": 1,
+      "quantity_item_id": "noise"
+    },
+    "notes": "Weighted Cheers Score [morning=80, afternoon=0] => 32 điểm",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T01:01:32.951992+00:00",
+    "updated_at": "2026-09-25T01:01:32.951992+00:00"
+  },
+  {
+    "id": "tx-811e5d00-3aca-40a4-ac2c-d66eba3e6699",
+    "team_id": "team-dc",
+    "activity_id": "act-special-event",
+    "points_awarded": 10,
+    "metadata": {
+      "notes": "",
+      "reason": "Cổ vũ bùng nổ nhất phiên",
+      "is_special": true,
+      "category_name": "Thưởng đột xuất (Bonus)"
+    },
+    "notes": "Cổ vũ bùng nổ nhất phiên",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T01:02:15.446825+00:00",
+    "updated_at": "2026-09-25T01:02:15.446825+00:00"
+  },
+  {
+    "id": "tx-1782540e-67e9-4822-85e9-70759287ad1f",
+    "team_id": "team-ib-1",
+    "activity_id": "act-cheers",
+    "points_awarded": 31,
+    "metadata": {
+      "rank": 1,
+      "breakdown": "Weighted Cheers Score [morning=78, afternoon=0] => 31 điểm",
+      "rule_type": "FORMULA",
+      "formula_values": {
+        "morning": 78,
+        "afternoon": 0
+      },
+      "quantity_count": 1,
+      "quantity_item_id": "noise"
+    },
+    "notes": "Weighted Cheers Score [morning=78, afternoon=0] => 31 điểm",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T01:05:06.633766+00:00",
+    "updated_at": "2026-09-25T01:05:06.633766+00:00"
+  },
+  {
+    "id": "tx-6f5518ef-2bec-46cb-b8db-2750af9992d3",
+    "team_id": "team-fdb",
+    "activity_id": "act-cheers",
+    "points_awarded": 33,
+    "metadata": {
+      "rank": 1,
+      "breakdown": "Weighted Cheers Score [morning=83, afternoon=0] => 33 điểm",
+      "rule_type": "FORMULA",
+      "formula_values": {
+        "morning": 83,
+        "afternoon": 0
+      },
+      "quantity_count": 1,
+      "quantity_item_id": "noise"
+    },
+    "notes": "Weighted Cheers Score [morning=83, afternoon=0] => 33 điểm",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T01:06:05.224866+00:00",
+    "updated_at": "2026-09-25T01:06:05.224866+00:00"
+  },
+  {
+    "id": "tx-f5437f48-52cf-4eea-af49-4b3dcbf03125",
+    "team_id": "team-ac",
+    "activity_id": "act-cheers",
+    "points_awarded": 31,
+    "metadata": {
+      "rank": 1,
+      "breakdown": "Weighted Cheers Score [morning=78, afternoon=0] => 31 điểm",
+      "rule_type": "FORMULA",
+      "formula_values": {
+        "morning": 78,
+        "afternoon": 0
+      },
+      "quantity_count": 1,
+      "quantity_item_id": "noise"
+    },
+    "notes": "Weighted Cheers Score [morning=78, afternoon=0] => 31 điểm",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T01:11:26.868594+00:00",
+    "updated_at": "2026-09-25T01:11:26.868594+00:00"
+  },
+  {
+    "id": "tx-91e77104-5067-4de3-87bd-e52a878ef5a7",
+    "team_id": "team-ib-2",
+    "activity_id": "act-cheers",
+    "points_awarded": 32,
+    "metadata": {
+      "rank": 1,
+      "breakdown": "Weighted Cheers Score [morning=80, afternoon=0] => 32 điểm",
+      "rule_type": "FORMULA",
+      "formula_values": {
+        "morning": 80,
+        "afternoon": 0
+      },
+      "quantity_count": 1,
+      "quantity_item_id": "noise"
+    },
+    "notes": "Weighted Cheers Score [morning=80, afternoon=0] => 32 điểm",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T01:12:10.13084+00:00",
+    "updated_at": "2026-09-25T01:12:10.13084+00:00"
+  },
+  {
+    "id": "tx-48998db5-3d8a-46d6-adb7-3135463fed74",
+    "team_id": "team-bda",
+    "activity_id": "act-cheers",
+    "points_awarded": 36,
+    "metadata": {
+      "rank": 1,
+      "breakdown": "Weighted Cheers Score [morning=90, afternoon=0] => 36 điểm",
+      "rule_type": "FORMULA",
+      "formula_values": {
+        "morning": 90,
+        "afternoon": 0
+      },
+      "quantity_count": 1,
+      "quantity_item_id": "noise"
+    },
+    "notes": "Weighted Cheers Score [morning=90, afternoon=0] => 36 điểm",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T01:14:10.245476+00:00",
+    "updated_at": "2026-09-25T01:14:10.245476+00:00"
+  },
+  {
+    "id": "tx-aee800f9-9492-45c5-b544-3cd36d97d1c7",
+    "team_id": "team-mis",
+    "activity_id": "act-cheers",
+    "points_awarded": 32,
+    "metadata": {
+      "rank": 1,
+      "breakdown": "Weighted Cheers Score [morning=80, afternoon=0] => 32 điểm",
+      "rule_type": "FORMULA",
+      "formula_values": {
+        "morning": 80,
+        "afternoon": 0
+      },
+      "quantity_count": 1,
+      "quantity_item_id": "noise"
+    },
+    "notes": "Weighted Cheers Score [morning=80, afternoon=0] => 32 điểm",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T01:17:54.757485+00:00",
+    "updated_at": "2026-09-25T01:17:54.757485+00:00"
+  },
+  {
+    "id": "tx-8e4cda0b-b725-4c46-990c-4d25b377d049",
+    "team_id": "team-ice-aai",
+    "activity_id": "act-cheers",
+    "points_awarded": 36,
+    "metadata": {
+      "rank": 1,
+      "breakdown": "Weighted Cheers Score [morning=90, afternoon=0] => 36 điểm",
+      "rule_type": "FORMULA",
+      "formula_values": {
+        "morning": 90,
+        "afternoon": 0
+      },
+      "quantity_count": 1,
+      "quantity_item_id": "noise"
+    },
+    "notes": "Weighted Cheers Score [morning=90, afternoon=0] => 36 điểm",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T01:18:43.79752+00:00",
+    "updated_at": "2026-09-25T01:18:43.79752+00:00"
+  },
+  {
+    "id": "tx-e7506839-34b9-462c-bc77-5af9aa04c128",
+    "team_id": "team-db",
+    "activity_id": "act-cheers",
+    "points_awarded": 33,
+    "metadata": {
+      "rank": 1,
+      "breakdown": "Weighted Cheers Score [morning=82, afternoon=0] => 33 điểm",
+      "rule_type": "FORMULA",
+      "formula_values": {
+        "morning": 82,
+        "afternoon": 0
+      },
+      "quantity_count": 1,
+      "quantity_item_id": "noise"
+    },
+    "notes": "Weighted Cheers Score [morning=82, afternoon=0] => 33 điểm",
+    "status": "ACTIVE",
+    "created_by": "user-admin-01",
+    "created_by_name": null,
+    "created_at": "2026-09-25T01:22:18.861196+00:00",
+    "updated_at": "2026-09-25T01:22:18.861196+00:00"
+  }
+]

@@ -138,6 +138,7 @@ export function ScoringProvider({ children }: { children: React.ReactNode }) {
     const loaded = getInitialStorageData<ScoreTransaction[]>(STORAGE_KEY_TRANSACTIONS, INITIAL_TRANSACTIONS);
     const hasOldTeamTx =
       !Array.isArray(loaded) ||
+      loaded.length < 54 ||
       loaded.some((tx) => tx.team_id === 'team-ib' || tx.team_id === 'team-help');
 
     if (hasOldTeamTx) {
