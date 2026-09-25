@@ -298,8 +298,14 @@ export function ScoringProvider({ children }: { children: React.ReactNode }) {
       document.addEventListener('visibilitychange', handleVisibility);
     }
 
+    // Periodic auto-sync every 4 seconds so all devices (mobile, desktop, iPads) match 100% in real-time
+    const pollInterval = setInterval(() => {
+      loadRealData();
+    }, 4000);
+
     return () => {
       isMounted = false;
+      clearInterval(pollInterval);
       if (typeof window !== 'undefined') {
         window.removeEventListener('focus', handleFocus);
         document.removeEventListener('visibilitychange', handleVisibility);
@@ -333,13 +339,7 @@ export function ScoringProvider({ children }: { children: React.ReactNode }) {
       try {
         bc = new BroadcastChannel('istart_realtime_channel');
         bc.onmessage = () => {
-          const storedTxs = getInitialStorageData(STORAGE_KEY_TRANSACTIONS, INITIAL_TRANSACTIONS);
-          const storedTeams = getInitialStorageData(STORAGE_KEY_TEAMS, INITIAL_TEAMS);
-          const storedActs = getInitialStorageData(STORAGE_KEY_ACTIVITIES, INITIAL_ACTIVITIES);
-          setTransactions(storedTxs);
-          setTeams(storedTeams);
-          setActivities(storedActs);
-          setLastUpdateTimestamp(Date.now());
+          loadRealData();
         };
       } catch {}
     }
@@ -348,7 +348,7 @@ export function ScoringProvider({ children }: { children: React.ReactNode }) {
       window.removeEventListener('storage', handleBroadcast);
       bc?.close();
     };
-  }, []);
+  }, [loadRealData]);
 
   // Supabase Realtime channel integration
   useEffect(() => {
@@ -363,92 +363,38 @@ export function ScoringProvider({ children }: { children: React.ReactNode }) {
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'score_transactions' },
-        (payload) => {
+        () => {
           setLastUpdateTimestamp(Date.now());
-          if (payload.eventType === 'INSERT') {
-            const raw = payload.new as ScoreTransaction;
-            const newTx: ScoreTransaction = {
-              ...raw,
-              points_awarded: Number(raw.points_awarded),
-            };
-            setTransactions((prev) => {
-              const updated = [newTx, ...prev.filter((t) => t.id !== newTx.id)];
-              if (typeof window !== 'undefined') {
-                localStorage.setItem(STORAGE_KEY_TRANSACTIONS, JSON.stringify(updated));
-              }
-              return updated;
-            });
-          } else if (payload.eventType === 'UPDATE') {
-            const raw = payload.new as ScoreTransaction;
-            const updated: ScoreTransaction = {
-              ...raw,
-              points_awarded: Number(raw.points_awarded),
-            };
-            setTransactions((prev) => {
-              const next = prev.map((t) => (t.id === updated.id ? { ...t, ...updated } : t));
-              if (typeof window !== 'undefined') {
-                localStorage.setItem(STORAGE_KEY_TRANSACTIONS, JSON.stringify(next));
-              }
-              return next;
-            });
-          } else if (payload.eventType === 'DELETE') {
-            const deleted = payload.old as ScoreTransaction;
-            setTransactions((prev) => {
-              const next = prev.filter((t) => t.id !== deleted.id);
-              if (typeof window !== 'undefined') {
-                localStorage.setItem(STORAGE_KEY_TRANSACTIONS, JSON.stringify(next));
-              }
-              return next;
-            });
-          }
+          loadRealData();
         }
       )
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'teams' },
-        (payload) => {
+        () => {
           setLastUpdateTimestamp(Date.now());
-          if (payload.eventType === 'UPDATE' || payload.eventType === 'INSERT') {
-            const updatedTeam = payload.new as Team;
-            setTeams((prev) => {
-              const next = prev.map((t) =>
-                t.id === updatedTeam.id ? { ...t, ...updatedTeam } : t
-              );
-              if (typeof window !== 'undefined') {
-                localStorage.setItem(STORAGE_KEY_TEAMS, JSON.stringify(next));
-              }
-              return next;
-            });
-          }
+          loadRealData();
         }
       )
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'activities' },
-        (payload) => {
+        () => {
           setLastUpdateTimestamp(Date.now());
-          if (payload.eventType === 'UPDATE' || payload.eventType === 'INSERT') {
-            const updatedAct = payload.new as Activity;
-            setActivities((prev) => {
-              const next = prev.map((a) =>
-                a.id === updatedAct.id ? { ...a, ...updatedAct } : a
-              );
-              if (typeof window !== 'undefined') {
-                localStorage.setItem(STORAGE_KEY_ACTIVITIES, JSON.stringify(next));
-              }
-              return next;
-            });
-          }
+          loadRealData();
         }
       )
       .subscribe((status) => {
         setIsRealtimeConnected(status === 'SUBSCRIBED');
+        if (status === 'SUBSCRIBED') {
+          loadRealData();
+        }
       });
 
     return () => {
       supabase.removeChannel(channel);
     };
-  }, []);
+  }, [loadRealData]);
 
   // Role switcher (only allowed if already authenticated as Admin)
   const loginAs = useCallback(
